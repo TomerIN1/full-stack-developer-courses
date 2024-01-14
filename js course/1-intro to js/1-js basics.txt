@@ -1,0 +1,57 @@
+What is JavaScript?
+- this is a technology that we use to create websites like amazone or youtube. 
+- in a computure we are using a website.  
+- in a phone we are using an App.
+
+There are 3 Technologies that we use to create websites. 
+each one has a perpuse in creating a website: 
+1. html - create the content of the website. it creates all the buttons, the text and the images.  
+2. css - chages the appearance of the website. using css we can make our website look nice. 
+3. js - makes our website interactive. so wihtout js we can't really click on a buttons and our website will do nothing. 
+
+
+this course is focus on JavaScript. 
+
+
+Setup for starting to work with JS:
+1. install web browser (lets us view websites) - we will use chrom. 
+
+------------------------------------------------------------------------
+we're going to start by learning what exactly is JS and how des it work. 
+the easy way to understand js is think that we are giving insturctions to a computer, and then the computer follows our instrunctions.  
+the best way to learn this is to jump in and give it a try. 
+1. first open google chrome. 
+2. next, type: "supersimple.dov/js-basics and press enter. 
+3. to give instuction, right click, click inspect, and then go to console. 
+4. let's give the first instrunctions. type: alert('hello'); --> this is instructions to give a pop up window in our browser. 
+5. let's do it again. type: alert('good job!'); 
+
+Terminology:
+now let's lern some Terminology. the instuctions we give to our computer are called: "code". 
+when we press enter and the computer follows our instructions this is called: "running the code"
+there are many programming languages.
+-- it is similar to human languages (but for code). for example: JS, python and Java. 
+
+Console in browser:
+Now that we are understand the Terminology, we can do more stuff. 
+let's learn about Math. 
+1. go back to the console. 
+2. type: 2 + 2 --> this is insturctions to calculate math. 
+
+let's learn about document.
+1. go back to the console. 
+2. type: document.body.innerHTML = 'hello'; press enter. 
+3. it remove all the things in the page and replaces it with the text hello. 
+in this example we use js to modify the webpage. 
+modify the web page is one of the most important features of JS. 
+ 
+syntax:
+Syntax are the rules that we have to follow when using a programming languages. like grammer. 
+in programming, we have to foolow the rules of syntax exactly. 
+for example if in the console we type: alert'hello'); then we will get a SyntaxError. 
+
+Summary for this lesson:
+1. JS is giving instuctions to a computer.
+2. wrote JS code. 
+2. run our code using the console.
+3. syntax.
