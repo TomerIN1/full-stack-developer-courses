@@ -7,13 +7,3 @@ function functionName(){
 // call the function
 functionName();
 
-
-//another function with paramers
-function addNumbers(a,b){
-    result = a + b;
-    console.log(result);
-    return result;
-}
-
-console.log(addNumbers(2,2));
-
