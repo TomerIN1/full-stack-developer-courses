@@ -1,0 +1,184 @@
+*{/*select all the elemnts in the document and do somthing with it*/
+    margin: 5px; /*add margin to each element. use the rem or em so the page will auto adjust to the size of the screen*/
+    padding: 0; /*padding is the inner boarder of each element*/
+}
+
+
+body{ /*use the body to disign the whole page*/
+    background-color: #202124; /*the background of the entire page*/
+    color: #bdc1c6; /*the background of the entire text in the page*/
+    min-height: 100vh; /*sets the min height for the page. this will help us to push the footer to the bottom of the page.  CSS property sets the minimum height of an element to be 100% of the viewport height. This ensures that the element will always be at least as tall as the viewport, which is useful for pushing a footer to the bottom of the page, even if the content is not enough to fill the entire viewport.*/
+    display: flex; /*this action will change the default layout of the ettire page to horizontal direction. in order to fix it we need to add also flex-direction: column. in addition if we add flex display on the parant container which is the body, any direct children we have we can say flex: 1; which will evectivly position the chiled element and make is space greedy as possible. now go and take a look on the main child element.  */
+    flex-direction: column; /*this action will stuck all the elements in the body on top of each other */
+    gap: 14px; 
+    font-family: Georgia, 'Times New Roman', Times, serif; /*set the font for your page*/
+}
+
+header{
+    display: flex; /*flex display makes the display horizontal*/
+    align-items: center;  /*center all the items on the same y axis*/
+    justify-content: space-between; /*makes evan space between the elements on the x axis*/
+    /*flex-direction: column; -- if you want this command makes the enire elements to be on a column and not a row*/
+}
+
+nav, section{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /*creates a gap between the elements of each container*/
+}
+
+.whiteLink{ /*you can use class to identify a specific element in the html and design it whatever you want - class take prioroty from the element (for example the body). in addition, the id takes prioroty from the class and element.*/
+    color: white;
+}
+
+a{ /*for all the linkes in the page*/
+    text-decoration: unset; /*disable the deafault line under the link*/
+    font-size: 0.8em;
+}
+
+a:hover{ /*for all the linkes in the page when the mouse is hover on the object then*/
+    text-decoration: underline; /*show under each link a line*/
+}
+
+main{
+    flex: 1; /*this main child element is get the flex: 1, which tells the code that the main element inside the body (parent element) should take as much room as possible. in addition, it is push the footer to the bottom of the page*/
+    text-align: center; /*center the whole text and elements inside the div or parat*/
+    align-items: center;
+    justify-content: center;
+    margin-top: 4rem;
+}
+
+@media screen and (max-width: 768px) {
+    main{
+        display: center;
+        text-align: center;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        margin: 1rem;
+    }
+}
+
+.heaerText{
+    font-size: 4rem;
+}
+
+#headerLogo{
+    font-family: sans-serif, 'Times New Roman', Times, serif; /*using the id takes prioroty from the call and parant element. it's a unique id for this element*/
+}
+
+.searchBar{
+    display: flex;
+    width: 90%; /*makes the object adustable to the width screen. for pc and mobile*/
+    max-width: 800px; /*stop width to be 100% if the max-width is 700px*/
+    margin: 0 auto; /* 0 means to cancell the marin on the y axis and make it adjustable on the left and right sids*/
+    gap: 1px; /*make some gaps between the iconds and the seach bar*/
+    border: 1px solid gray; /*add border to the seach bar that includes all the elements (icons + seach bar*/
+    padding: 14px; /*add more gap between the inner elements and the boarder of the element*/
+    border-radius: 24px; /*add radious to the element on the shapes*/
+    
+}
+
+.searchBar:hover{
+    border-color: transparent; /*don't chagne the color when mouse hover*/
+    background: #334155; /*chages the color when mouse hover the botton*/
+    transition: background-color 0.3s ease; /* Adjust the speed by changing the duration (0.3s) and timing function (ease) */
+}
+
+
+input{
+    background-color: transparent;
+    outline: none;
+    border: unset;
+    color: white;
+    flex: 1; 
+}
+
+
+.main_btn_container button{ /*in the class container of main_btn_container on the buttons elements do the following:*/
+    padding: 14px;
+    border-radius: 8px;
+    background: #303134;
+    color: white;
+    gap: 14px;
+    margin-top: 1rem;
+    border: 1px solid transparent; /*drop the shade of the button (transperent) sand make it solid so when hover on these buttons the side of the buttons will not change*/
+    cursor: pointer; /*when the mouse is hovord on the button, then the cursor icon change to a hand*/
+}
+
+.main_btn_container button:hover{ /*on the buttons in the main-btn-container when hover on them create a border of darkgray with thickness of 1px and make it solid*/
+    border: 1px solid darkgray;
+}
+
+
+.iconButton{
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+
+.languageSelection span{ /*chagne the span to be in blue color. make the 'israel' word colored.*/
+    color: cornflowerblue; 
+}
+
+
+.features{
+    display: flex;
+    justify-content:space-around;
+    margin: 1rem;
+    flex: 1;
+    align-items: center;
+    text-align: center;
+}
+
+@media screen and (max-width: 768px) { /*use @media and max-width for small screens*/
+    .features{
+        display: block; /*use display: block in order to stop flex the element rather to stack it on each other - so it will be feet to a mobile phone.*/
+        text-align: center;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        margin: 1rem;
+    }
+}
+
+
+@media screen and (max-width: 768px) { 
+    .featuresContainer{
+        margin: 2rem;
+    }
+}
+
+
+footer{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.lowerFooter{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1px solid darkgray;
+    padding: 10px;
+}
+
+.lowerFooter a{
+    cursor: pointer;
+}
+
+
+@media screen and (max-width: 500px) { 
+    .lowerFooter{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+

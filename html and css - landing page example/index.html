@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> <!--in order for the @media and flexability of small screens you have to have this line of code-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="C:\Users\Tomer Itzhakov Nevo\Desktop\Tomer\full stack developer courses\html and css - landing page example\index.css"> <!--this is the connection between the css file and the html file -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> <!--this link from "https://cdnjs.com/libraries/font-awesome" allows you to insert icons into your code. the icons themselfs you can find on: "https://fontawesome.com/icons" -->
+</head>
+<body>
+    <header>
+        <nav>
+            <img src="C:\Users\Tomer Itzhakov Nevo\Desktop\Tomer\full stack developer courses\html and css - landing page example\user_icon.png" alt="userIcon-btn"> <!--this is how you add an image in html-->
+            <img src="C:\Users\Tomer Itzhakov Nevo\Desktop\Tomer\full stack developer courses\html and css - landing page example\aplications_icon.png" alt="aplication-btn">
+        </nav>
+        <section>
+            <a class="whiteLink" href="https://www.google.com/gmail/about/">Gmail</a> <!--this is how you add a link in html-->
+            <a class="whiteLink" href="https://www.google.co.il/imghp?hl=iw&authuser=0&ogbl">Images</a>
+        </section>
+    </header>
+
+    <main>
+        <h1 class="heaerText" id="headerLogo" >Google!</h1> <!--we can add call to the main header. in addition we can add id which is unique and can be used in css and js code-->
+        <div class = "searchBar">
+            <button class="iconButton"><i class="fa-solid fa-magnifying-glass"></i></button> <!--in order to select some icons you can use "https://cdnjs.com/libraries/font-awesome" (just search the icon, copy the code and finally pase it in your code)-->
+            <input type="text">
+            <button class="iconButton"><i class="fa-solid fa-microphone"></i></button>
+            <button class="iconButton"><i class="fa-solid fa-camera"></i></button>
+        </div>
+        <div class="main_btn_container">
+            <button>Search in Google</button>
+            <button>Google Israel</button>
+        </div>
+        <p class="languageSelection">Google offered in:<span>Israel</span></p>
+    </main>
+
+    <hr> <!--makes a line accross the page-->
+
+    <div class="features" >
+        <div class = "featuresContainer">
+            <h1>Search</h1>
+            <p>find what you want</p>
+        </div>
+        <div class = "featuresContainer">
+            <h1>translate languages</h1>
+            <p>learn any language you want</p>
+        </div>
+        <div class = "featuresContainer">
+            <h1>learn html</h1>
+            <p>html is cool</p>
+        </div>
+    </div>
+
+    
+    <footer>
+        <section>
+            <p>Israel</p>
+        </section>
+        <div class="lowerFooter">
+            <section>
+                <a>Advertising</a>
+                <a>Business</a>
+                <a>How Search Works</a>
+            </section>
+            <section>
+                <a>Privacy</a>
+                <a>Terms</a>
+                <a>Settings</a>
+            </section>
+        </div>
+    </footer>
+</body>
+</html>
