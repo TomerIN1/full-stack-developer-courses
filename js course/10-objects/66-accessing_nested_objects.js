@@ -14,7 +14,7 @@ var myStorage = {
 };
 
 // let's try to get the gloveBoxContents
-var gloveBoxContents = myStorage.car.inside["glove box"]
+var gloveBoxContents = myStorage.car.inside["glove box"];
 
 //check
-console.log(gloveBoxContents)
+console.log(gloveBoxContents);
