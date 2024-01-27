@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1 class = "hello_world">Hello World</h1>
+        <input id = num1 type="number" placeholder="select a number"><br>
+        <input id = num2 type="number" placeholder="select another number"><br>
+        <button id = calcBtn> Click here to calculate</button><br>
+        <p id = calcResult></p>
+    </div>
+
+
+    <script>
+        //create variable from calculation button
+        const calcBtn = document.getElementById('calcBtn')
+
+        //create a function to sum the numbers
+        const sumNumbers = (a,b) => a+b;
+
+        //add event listener that when click on calcBtn then calculate the function and present it in the page
+        calcBtn.addEventListener('click', function(){
+            let num1 = parseFloat(document.getElementById('num1').value); //after click get first num using getElementById and convert the string to number
+            console.log(num1);
+            let num2 = parseFloat(document.getElementById('num2').value);//get second num using getElementById and convert the string to number
+            console.log(num2);
+            document.getElementById('calcResult').innerHTML = sumNumbers(num1, num2).toString() //add both numbers and presend it in the browser using the innerHTML and the function.return as string. 
+        });
+
+    </script>
+
+</body>
+</html>
