@@ -10,7 +10,7 @@ each one has a perpuse in creating a website:
 3. js - makes our website interactive. so wihtout js we can't really click on a buttons and our website will do nothing. 
 
 
-this course is focus on JavaScript. 
+this course is focus on JavaScript. course youtube link: https://www.youtube.com/watch?v=PkZNo7MFNFg&list=TLPQMjUwMTIwMjTTwA838_4-0A&index=1
 
 
 Setup for starting to work with JS:

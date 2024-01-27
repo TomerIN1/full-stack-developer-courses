@@ -1,0 +1,26 @@
+//ES6 provides a syntax to create objects using the class keyword. 
+<!DOCTYPE html>
+<html>
+<body>
+<h1>JavaScript Classes</h1>
+<p>Creating two car objects from a car class:</p>
+
+<p id="demo"></p>
+
+<script> //this is how you create a class. class allows you to create multiple objects that are from the same class. 
+class Car {
+  constructor(name, year) {
+    this.name = name;
+    this.year = year;
+  }
+}
+
+const myCar1 = new Car("Ford", 2014);
+const myCar2 = new Car("Audi", 2019);
+
+document.getElementById("demo").innerHTML =
+myCar1.name + " " + myCar2.name;
+</script>
+
+</body>
+</html>
