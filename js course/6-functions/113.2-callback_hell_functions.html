@@ -1,0 +1,42 @@
+
+<!-- link to video: https://www.youtube.com/watch?v=bx9xYPt2tdc&list=PLnHJACx3NwAfRUcuKaYhZ6T5NRIpzgNGJ&index=14
+//callback hell
+//even if callbacks functions are very widely used, there are some situations where promises (which we learn in the next lesson) and async await make our code easier to manage. 
+//so first let's see what is callback hell is all about. 
+
+//after 1s first red;
+//after 3s second blue;
+//after 2s third green;
+// IN SEQUENCE !!!
+!-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="text-align: center; ">
+    <div>
+        <h1>Callback Hell</h1> <br>
+        <p id=first>Hellow World</p> <br>
+        <p id=second>Hellow People</p> <br>
+        <p id=third>Hellos Javascript</p><br>
+        <button id=btn>Click Me</Menu></button>
+    </div>
+</body>
+
+<script>
+    const first = document.querySelector('.first')
+    const second = document.querySelector('.second')
+    const third = document.querySelector('.third')
+
+    const btn = document.querySelector('.btn')
+
+    btn.addEventListener('click', () => {
+        console.log('hellw world')
+    })
+</script>
+
+</html>

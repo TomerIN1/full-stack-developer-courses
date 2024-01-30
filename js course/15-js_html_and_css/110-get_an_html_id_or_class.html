@@ -14,6 +14,13 @@
         <p id = calcResult></p>
     </div>
 
+    <div>
+        <h1>Type Your Name</h1>
+        <input id = nameTxt type="text" placeholder="type your name">
+        <button id = nameBtn>Click Here</button><br>
+        <p id = nameResult></p>
+    </div>
+
 
     <script>
         //create variable from calculation button
@@ -30,6 +37,24 @@
             console.log(num2);
             document.getElementById('calcResult').innerHTML = sumNumbers(num1, num2).toString() //add both numbers and presend it in the browser using the innerHTML and the function.return as string. 
         });
+
+
+    //create variable from nameBtn
+    const nameBtn = document.getElementById('nameBtn')
+
+    //create a function that print the name vertically
+    const printName = function (string){
+        letter = '' //create empty variable to hold the string
+        for(let i = 0; i < string.length; i++){ //for the length of the string
+            letter += string[i] + '<br>'; //each letter add to letter and br to go to the next line
+        }
+        return letter //in the end of the loop return result
+    }
+
+    nameBtn.addEventListener('click', function(){ //when nameBtn clicked then run the function
+        const nameTxt = document.getElementById('nameTxt').value; //get value from nameTxt the user add. 
+        document.getElementById('nameResult').innerHTML = printName(nameTxt); //print the name vertically on the screen. 
+    });
 
     </script>
 
