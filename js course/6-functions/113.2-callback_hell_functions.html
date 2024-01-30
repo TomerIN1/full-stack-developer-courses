@@ -1,4 +1,3 @@
-
 <!-- link to video: https://www.youtube.com/watch?v=bx9xYPt2tdc&list=PLnHJACx3NwAfRUcuKaYhZ6T5NRIpzgNGJ&index=14
 //callback hell
 //even if callbacks functions are very widely used, there are some situations where promises (which we learn in the next lesson) and async await make our code easier to manage. 
@@ -20,23 +19,63 @@
 <body style="text-align: center; ">
     <div>
         <h1>Callback Hell</h1> <br>
-        <p id=first>Hellow World</p> <br>
-        <p id=second>Hellow People</p> <br>
-        <p id=third>Hellos Javascript</p><br>
-        <button id=btn>Click Me</Menu></button>
+        <p class=first>Hello World</p> <br>
+        <p class=second>Hello People</p> <br>
+        <p class=third>Hello Javascript</p><br>
+        <button class=btn>Click Me</Menu></button>
     </div>
 </body>
 
 <script>
+    //callback hell. let's see how it looks like. 
+    //so for example you want to click on a button, and after one second of clicking the btn the first setting needs to turn red. than after 3 seconds the secod heading needs to turn blue, and after 2 seconds the third needs to turn green. 
     const first = document.querySelector('.first')
     const second = document.querySelector('.second')
     const third = document.querySelector('.third')
 
     const btn = document.querySelector('.btn')
 
+    /* below this is the not sequence code. it is trigger every first, seond and third after the click event. 
     btn.addEventListener('click', () => {
-        console.log('hellw world')
+        setTimeout(() =>{
+            first.style.color = 'red';
+        },1000); //after 1 second my first heading turns red. 
+        setTimeout(() =>{
+            second.style.color = 'blue';
+        },3000); //after 3 second my first heading turns red. 
+        setTimeout(() =>{
+            third.style.color = 'green';
+        },2000); //after 2 second my first heading turns red. 
     })
+
+    //now, what if the requirements change and all these actions need to run in the sequence. 
+    //so notice right now i have my first heading, then i have my third one, and only then i have the second one. 
+    //but what if requirements are that i want still my first heading to turn red after one second, 
+    //but then i want the second one and that needs to happen after three seconds. 
+    //so essentially i what that the second one to turn on in four seconds and the third one to turn in sex seconds. 
+    //!!meaning!!, the second one will come just aftter the first one, and not 3 secods after the click event. 
+    //the idea is that you allways want to depend on first value, so as the first changes then of course these values will change as well. 
+    //so hard coding is not an option. so what can you do? 
+    //the callback hell is to take the second and the third and insert them into the first setTimeout so they coud run in sequence.*/
+
+    btn.addEventListener('click', () => {
+        setTimeout(() =>{
+            first.style.color = 'red'; //after the first comes the second.
+                setTimeout(() =>{
+                second.style.color = 'blue'; //after the second comes the third
+                        setTimeout(() =>{
+                    third.style.color = 'green'; //run the third
+                },2000); 
+            },3000); 
+        },1000); 
+    })
+
+    //now the problem with this code and essentially the whole point of this video is the code above.
+    //thake a look at our code, and theproblem is following where it is getting harder and harder to manage our code. 
+    //yes, our functionality works, but it is not well organized. keep in mind that this is the most basic functionality. 
+    //normaly, in a real world you'll have way more complex logic inside of these callback functions. 
+    //and now, this is the time to learn promises and async await, which can sove the callback hell and make the code much more manageable and readable. 
+
 </script>
 
 </html>

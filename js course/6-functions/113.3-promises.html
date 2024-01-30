@@ -1,0 +1,96 @@
+<!--link to video: https://www.youtube.com/watch?v=IBjmTlShf6U&list=PLnHJACx3NwAfRUcuKaYhZ6T5NRIpzgNGJ&index=15
+
+lesson name: promises
+
+promises def: 
+In JavaScript, a promise is an object representing the 
+eventual completion or failure of an asynchronous operation.
+It allows you to handle asynchronous operations in a more 
+manageable way, using methods such as then, catch, and finally 
+to handle the eventual result or failure of the operation.
+
+the main perpose of using promises is to avoid callback hell. 
+//it alows us to write aync code in a synchronous fashion. 
+//with that said, since we also have a sync await in the js, a common practice is to use promises with async await which we're going to coverin the upcoming lessons.
+//since async await provides even cleaner syntax. 
+
+the main principles of promises. 
+//in javascript promis is an abject that returns a value which you hope to recive in the future but not now. 
+
+//nice analogy is this one: 
+//imangine you are in a fast food restaurant, and you just completed your order, and once you're done with your payment most likely you don't get the item right away. 
+//instead you get a receipt, which is a promise by the restaurant that once the item is ready you'll get it. 
+//and once the two, three or whatever amout of minutes are up, and the item is ready, you show the receipt and you get the product. 
+//now, in a bizarre world you also might be rejected. maybe they just realize there is no more from the product you've ordered. 
+
+//the whole point is that the receipt is a promise! that you'll get the item eventually or rejected it. 
+//in the js plan, an extremely common example of using promises is going to be the http request. 
+//you set up the request, and of course you don't get the responce right away. 
+//because it is a asynchronous operation. only once the server responds you either get the data that you're looking for or you get an error. 
+
+//now, let's see how promises looks in code.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="text-align: center; ">
+    <div>
+        <h1>Promises</h1> <br>
+    </div>
+
+    <script>
+        const promise = new Promise((resolve, reject)=>{ //here we create new promis and inside it call two functions as arguments inside the arrow function. common practice is calling them resolve and reject.
+                                                        //here is the mind grenade. essentially these are functions. so yes, you pass a callback function into the promise and these two arguments are actually functions themselves. 
+                                                        //promises can be in either of these three states (pending, rejected, fulfilled). where one the promis goes from pending to rejected you can't go back. this is a one-way street. 
+                                                        //so, initially we'll always be pending, we'll be wating for that result and then you have either of these two choices. either it will be fulfilled which going to be awesome or rejected. 
+                                                        //we allways start with pending state as the default state. 
+                                                        //now, we can invoke the resolve and reject functions. 
+                                                        
+            resolve([1,2,3,3])//in the resolve we have a fiew options, you can pass in some kind of value. so imagine that scenario where we are pinging the server we're trying to look for data, if you want to pass this data to you aplication of course you'll have to pass it through resolve. 
+                                  //if you want to add you data, you simply app it in the function as an argument. 
+
+            reject('there was an error')
+        })
+
+        // console.log(promise.value) -> if you just console log this promise.value you'll get in the console undefined. you can't go to the object and request the value. 
+        // in order to see the promise, we need to use another methods and those methods are dot then (.then) for resolve and dot catch (.catch) for reject. 
+
+        console.log(promise)
+
+        //step one is to set the .then(function)
+        promise.then((dataSmataOrAnyNameParameter) => console.log(dataSmataOrAnyNameParameter)) //in .then() we pass in another callback function. and as a parameter in that callback function we can access this data "resolve('hello world')". we don't need to pass in function, but if we want to access some info, we need to pass it in the callback function. 
+
+        //step two is to set the .catch(function)
+        promise.then((dataSmataOrAnyNameParameter) => console.log(dataSmataOrAnyNameParameter)).catch((err)=> console.log(err))
+
+        //now you are probably asking yourself what is the usecase?
+        //the idea is that there's going to be some kind of condition. and based on that condition you'll either get the data so you'll resolve the promise or it's going to get rejected. 
+        //so for example, imagine that we are pinging the server, and if you get the data back you go with resolve and then you pass in that data to your aplication using .then and then if there was an error then you rejected. 
+
+        //let's see an example where we set up the promise based on the condition. 
+        //we're creating a random number, and if that number met the condition then it's resolved if not then it's rejected. 
+
+        //le't create a variable
+        const value = 2; 
+
+        const promise2 = new Promise((resolve, reject) => {
+            const random = Math.floor(Math.random() * 3); 
+            console.log(random);
+            if(random === value) {
+                resolve('you guessed correctly')
+            } else {
+                reject('wrong number')
+            }
+        }); 
+
+        promise2.then((data) => console.log(data)).catch((err) => console.log(err));
+
+
+
+
+    </script>
+</body>
