@@ -1,0 +1,157 @@
+<!--link to video: https://www.youtube.com/watch?v=GKVA6jYrgKc&list=PLnHJACx3NwAfRUcuKaYhZ6T5NRIpzgNGJ&index=16
+Lesson name: JS Nuggets - async / await by coding addict. 
+
+In this lesson, we'll continute discussing asynchronous code and more specifically how to use async await. 
+At the end of the day, async await allows us to write async code in synchronous fashion, instead of endlessly nesting callbacks. 
+
+When we use async await our await allways waits till promise is settled. 
+But we can only use await if we have a async in front of the function. 
+one of the things I've notice, where once people learn about async await they pretty much start using await all over their code but you can't do that. 
+you can only use it if the function that you have set up is actually async. 
+in addtion, aysnc function always always returns a promise!
+!-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="text-align: center;">
+    <div>
+        <h1>Async / Await</h1>
+    </div>
+    
+    <script>
+        //this lesson will be split into two parts:
+        //part one: general example. 
+        //part two: more specific example and see how it works in real life. 
+
+        //part one:
+        //let's prove that aysnc function will always return a promise. 
+
+        const example = async() => { //for async function we type async before the parenthesis. 
+           return 'hello there' 
+        } 
+
+        console.log(example()); //when invoke the function in log, you'll see that it is a promise + the promise is fulfilled. remember that async functions always return promise. 
+
+        //now what about await? let's set up another function. in order to use await we need to have async function. 
+        async function someFunc () { //once we use async we can also use await. remember, await waits till promise is settled. 
+            const result = await example (); //let's call the example function. essentially this is the main gole, where we have a synchronous code because we're waiting for the promise to settle, but we can actually write it in a synchronous fashion. 
+                                             //as a side note, if the promise is not returning any kinde of value, meaning remember when we covered the promises in resolve, sometimes you pass data in sometimes you don't you just resolve it. 
+                                             //so, then of course we don't need to assign it to a variable.
+                                             //then you just say: hey i want to wait for example and then i'm good to go. 
+                                             //and to hammer this home, i want to do one more console log and add hello world. (see example above)
+            console.log(result); //if we console.log we can see that we have the 'hello there' value. 
+            console.log('hello world'); //you'll notice that hello world is only after the hello there. 
+        }
+
+        someFunc(); //when we inoke the function we can see the value 'hello there' in the console.log. 
+                    //normally, this promise, is going to be coming from some kind of function that returns a promise.
+                    
+        //part two - real life example. 
+        //typically, we request such resorce from the database or from the api. 
+        const users = [ //we have users table as array with objects. this is a dim table. 
+            {id:1, name: 'jone'},
+            {id:2, name: 'susan'},
+            {id:3, name: 'anna'},
+        ]
+
+        const articels = [ // we have for each user his articels. this is a fact table. 
+            {userId: 1, articels: ['one','two','three']},
+            {userId: 2, articels: ['four', 'five']},
+            {userId: 3, articels: ['six','seven', 'eight', 'nine']},
+        ]
+
+        //of course in this scenario we can simply set up one function, but we want to showcase how whould you do that over the wire. 
+        //because wehn you're requesting, or setting up the http request, it must by ssynchronous. 
+        //this is why we set up some fake functions meaning functions that return a promise even though in this case we don't need to use it. 
+        
+        //so, we have the first function by the name of getUser. and we pass into this functino a name. 
+        //then we return a promise, and pass two callback functions arguments (resolve, reject). 
+        //then we create a user variable using the find method. we iterate the div table and check if the name passed in the param is exist in the div table
+        //lastly, we create if statement, if use exist then resolve and pass in the user in the resolve. 
+        //if not, then send err message. 
+        function getUser(name){
+            return new Promise((resolve, reject) => {
+                const user = users.find((user) => user.name === name)
+
+                if (user) { //if the user exists we resove it and return a user. 
+                    return resolve(user) //here we return the user in the resolve. when we will use the typical .then .approach then user with all his details will be available for us. 
+                } else{
+                    reject(`no such use with name: ${name}`)
+                }
+            })
+        }; 
+
+        //now the socond function is based on the first function. this needs to happens in sequence. 
+        //only once we get the user, only then, we can get the articles. 
+        //in the articles we pass in the userId which we get back from the getUser since we'll have access to it in the get user function
+        //and then if the user has any articles then of course we'll get the articles. 
+        //we can do that since all the users have the id. 
+        //if we successful we return those articles, however if somethings goes wrong and we can't find articales that match the userId then we will reject it. 
+         function getArticles(userId){
+            return new Promise((resolve, reject) => {
+                const userArticles = articels.find((user) => user.userId == userId)
+
+                if (userArticles) {
+                    return resolve(userArticles.articels)
+                } else {
+                    reject('Wrong ID')
+                }
+            })
+         }; 
+
+         //Now let's see how we whould do that user the typical .then .approach. 
+         //let's start with getUser. that is my function, and it returns a promise. and let's pass in a name. 
+         //now, add .then() and since we pass in the getUser function, in the resolve the user, we can select this user value from the .then(). 
+         getUser('susan')
+            //step one .then((user) => console.log(user)) //here we get the user data using the .then approach, and since in the getUser function we resolve it with returning the user Data then is it available for us now in the .then. once we save, we should see the id in the console.
+            .then((user) => getArticles(user.id)) //we know that if my function returns a promise the one that we're passing in the first step, then we can chain another .then. 
+            .then((articels) => console.log(articels))
+            .catch((err) => console.log(err)); 
+
+        //so we give a name. 
+        //get the user from get user function
+        //we use the user data to grab the user id
+        //we pass in the user id into the articles functions if the name exist
+        //we then get the articels. 
+
+        //now, instead of calling the getUser and get all with .then aproach, we can use asyen and await to do it more readable. 
+        const getData = async () => { //remember, when we use async we can use await. 
+            const user = await getUser('jone') //let's use await here. so in this case we can set up await so we can just stick it in front of the get user and just wait for that promise to be settled. so we don't have to go with thse .then. we dont have to say get me the user and then do something. no. i'm just going to say wait and then getUser as a promise. this is the whole point, we are wating for this promise to be settled.  
+                                               //here we first get the user. after getting the user, we create if statement - if user exsist give me his articles if not return err. 
+            if(user) {
+                const articles = await getArticles(user.id)
+                console.log(articles)
+            }
+        };
+
+        //get me the user, it the user exsist then get me the article. the getData is much more readable compare to the .then approach. 
+        
+        //finaly, we can add try and catch block to handel errors. 
+        const getData2 = async () =>{
+            try{
+                const user = await getUser('anna')
+                const articles = await getArticles(user.id)
+                console.log(articles)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+
+        getData2();
+
+
+    </script>
+
+
+</body>
+</html>
+
+
+
+
+
