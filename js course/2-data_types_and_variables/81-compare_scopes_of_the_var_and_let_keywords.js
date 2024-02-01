@@ -42,10 +42,10 @@ function checkScope3(){
     "use strict"
     //let i = "function scope"; //if we comment this line of code, what do you think will happen? 
     if (true){
-        var i = "block scope"; //change let to var
-        console.group("block scop i is: ", i); //result = black scope like declered in the if statement code block.  
+        var i = "block scope"; //change let to var. if it was let, then we'll get an error outside the block. 
+        console.group("block scop i is: ", i); //result = "black scope" like declered in the if statement code block. 
     }
-    console.log("function scope i is: ", i); //result = function scope like declared above. 
+    console.log("function scope i is: ", i); //result = "block scope" like declared above. why? because it's a var decleration.  
 
     return i;
 }

@@ -11,3 +11,6 @@ export {capitalizedString2};
 //we also exporting these two variables
 export let foo = "bar";
 export let bar = "foo";
+
+//now we can import them into another file. 
+

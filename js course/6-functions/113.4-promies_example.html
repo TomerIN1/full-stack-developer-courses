@@ -56,5 +56,13 @@ now, we will solve the callback hell but this time we will use promises.
                 .then(() => addColor(2000, '.third', 'green')) //we add another .then based on the second .then of this promise. 
                 .catch((err) => console.log(err)) //here we present the err  of the function. in order to show it, we have to pass it in the arrow func. 
         })
+
+        //summary:
+        //this code is definitely cleaner than the one we have of source in the callback hell. 
+        //essentially there's quite a bit of work here, in order to set everything up, but we need to keep in mide two things
+        //effctively if you are going to be setting up this function - you only have to do that one time and after that you can use it anywere in your code. 
+        // and second, oftentimes these functions will be provided for you and the only thing you'll actually have to do is use these function. 
+        //at the end of the day, the beauty of the promises is the fact that we can write a synchronous code that is far easier to read that the one that we have inside the callback hell. 
+        
     </script>
 </body>

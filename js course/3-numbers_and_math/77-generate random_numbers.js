@@ -6,6 +6,7 @@ function randomFraction(){
 }
 console.log(randomFraction());
 
+
 // you can also generate random whole numbers. 
 var randomNumberBetween0and19 = math.floor(math.random() * 20); // you can create whole number using the math.floor function. 
 function randomWholeNum(){
@@ -13,17 +14,20 @@ function randomWholeNum(){
 }
 console.log(randomWholeNum());
 
+
 //you can also generate random whole numbers within a range. 
 function ourRandomRange(ourMin, ourMax){
     return math.floor(Math.random() * (ourMax - ourMin + 1)) + ourMin;
 }
 console.log(ourRandomRange());
 
+
 //you can use the parseInt function. it takes a string and returns an integer. 
 function convertToInteger(str){
     return parseInt(str);
 }
 console.log(convertToInteger("56"));
+
 
 //use the parseInt function with radix. the parseInt function can also be used with a radix. 
 // the radix specifies the base of the number in the string. such as base 2 or base 7. a base 2 whould be binary, so that's one of the most common ones to use. 
