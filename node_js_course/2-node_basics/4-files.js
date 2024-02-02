@@ -73,4 +73,4 @@ if (fs.existsSync('./docs/deleteme.txt')) { //here we chech if the file exist. i
 
 //here is how to use the fileSytem in node.js and it workds well for small files. 
 //but, if we're reading from and writing to really really large files then it becomes more efficient to use steams to read and write data to and from files. 
-//let's go to the steams file to check it out. 
+//let's go to the streams file to check it out. 
