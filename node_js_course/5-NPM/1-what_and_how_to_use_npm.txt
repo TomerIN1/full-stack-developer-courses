@@ -1,0 +1,70 @@
+what and how to use npm?
+So far we've seen how to use core modules and packagesthat are built into the node core. 
+for example, the fs module to work with the file system.
+but, what if we want to use some additional packages for extra features that are not available in the node core?
+
+there literally thousands of user made packages that we can use with node.
+for example the express package that we are going to use later on in this course. 
+we can install all of them using NPM - the Node Package Manager. 
+
+NPM is automatically installed onto your computer when you install node. 
+and it's a tool that we can use to install, update or remove node packages onto our computer directly and also into our individual projects. 
+
+you can reach the NPM site by going to: http://www.npmjs.com 
+on this website we can search for different packages we might want to use in our project. 
+go to the search bar, type the package you want to search, see the result with the package and how to install it and how to use it in node. 
+
+first, we will install a package called nodemon which helps us with a development workflow. 
+let's learn how to install nodemon globaly onto our computer.
+
+installing packages globally. code: "npm install -g packageName"
+nodemon is a package which help us to create a live reload server, and that's really gonna speed up the development process. 
+because currently every time we make change, we need to save and then refresh our browser in order to see the chagne. nodemon is doing all of this automatically. 
+in order to install nodemon globaly type: "npm install -g nodemon" where '-g' stands for globally, and that means that nodemon will be install on your computer and will work in all of your projects. 
+because we install somthing globally on our computer in means we're not just installing it for our current project, it can be used anywhere on our computer. 
+so, we can use it on different projects in the future as well. 
+after installing nodemon, instead of writing node server to run the file, now we can use nodemon and type: "modemon server (file name)"
+if you are running nodemon on windows, sometimes the sysem blocks it from running. 
+so, in order to solve that open windows PowerShell and type: "Set-ExecutionPolicy -Scope CurrentUser RemoteSigned" than go back to your project and run the script using nodemone. 
+
+
+installing packages that are specific to our project:
+
+    1.what is package.json file? code:"npm init"
+    the package file is a JSON file. it keeps track of any packages we install locally to our project and other things as well such as project details and any kind of project specific scripts. 
+    if you're thinking of useing any kind of third-party packages at all in your project then you should definitely create a package JSON file. 
+    so, we do that by coming down to the terminal and write: "npm init". 
+    this initializes as a package.JSON file. it's going to ask some questions about our project, but most of people click enter until it start installing. 
+
+    once we finish install package.json file, you'll also see a package-lock.json file too. 
+    the "package-lock.json" keeps track of the different dependency versions that we have installed in our project. 
+    we don't need to go in and edit anything at all inside!!
+
+    in addition, the package.json file keeps track of a few different things about our project such as the name the version. 
+    we also have some script object that we can run (and learn more about in the future). 
+    but, more importantly this package.json file will keep track of our project dependencies and by dependencies we mean all of the packages we install locally into this project. 
+    those packages will become things the project depends on!
+
+    2.installing packages locally. code: "npm install packageName"
+    after creating package.json file we can start to install packages locally to the project. 
+    let's install in our project and third party package called lodash. go to the npm website, search for lowdash and click on it. 
+    type: "npm install lodash. now it will install the package for us in our project and we will be able to see it in our package.json file under the dependencies object. 
+
+    after installing a package don't forget to require this package in whatever file we need it. 
+    so, when you in the file you need it, just type: "const varName = require('lodash')"
+    now, node will automatically gonna know to look inside the node modues folder which is just magically appeard and that appered when we installed that local package. 
+    so, whenever we install a local package into our project it's gonna create a node modules folder, and all of the different files and folders that are needed for that package and the dependencies of that package are going to be kept inside node modules. 
+    we don't need to go directly to that folder ever.
+
+dependencies and node_modules file:
+The Node Package Manager (NPM) and the package.json file offer a convenient method for sharing project code without the need to include the potentially large node_modules folder.
+When sharing project code, particularly on platforms such as GitHub, the node_modules folder is not typically uploaded.
+Instead, recipients can utilize the package.json file to install the necessary dependencies using the "npm install" command.
+This command automatically installs all dependencies listed in the package.json file, ensuring that the relevant modules are readily available for the project without the need for manual installation of each individual dependency.
+The Node Package Manager (NPM) and the package.json file offer a convenient method for sharing project code without the need to include the potentially large node_modules folder.
+When sharing project code, particularly on platforms such as GitHub, the node_modules folder is not typically uploaded.
+Instead, recipients can utilize the package.json file to install the necessary dependencies using the "npm install" command.
+This command automatically installs all dependencies listed in the package.json file, ensuring that the relevant modules are readily available for the project without the need for manual installation of each individual dependency.
+
+In the next lesson we will install express and this is a framework for node that helps us to easily create node websites. 
+
