@@ -1,0 +1,43 @@
+<!--
+  the egs file can get also a clean html code. you can see it in the video of the course: https://www.youtube.com/watch?v=yXEesONd_54&list=PL4cUxeGkcC9jsz4LDYc6kv3ymONOKxwBU&index=7 starting from minute 7. it shows raw html. 
+  but, the power of ejs and other templating engines cometo life when we start to inject dynamic content variables and logic into these views. this is why we call it 'view engine'.
+
+  passing data into views:
+  how do we actually create dynamic content inside these templates? it's not static like a classic HTML file. 
+  we need to use egs tags and they look something like this (similar to php tags): <% %>. 
+  inside the <% %> we could do some dynamic code. so, for example we can write some js, <% const name = 'mario' %> and this is gonna run as JS but it's not going to run on the frontend, it does that on the server!
+  now, inside of this template we could output the name somewhere if we wanted to. 
+
+  so how do we output a value? 
+  for example, in a paragraph we can so something like this: <p> <%=name%> </p>. so first we create dynamic js code and then present the value in the browser. 
+
+  now, we don't want to do that, instead what we probably want to do is pass data from our app.js, because ultimately we probably communicate with database, get some data, and then we want to pass that data inside this view so we can then output it. 
+  so how do we do that? we'll skip the database for now because we've not covered that yet. but, instead let's lern how to pass data from our handler into a view. 
+  so, say for example, we want to output a dynamic value inside the title tag, and that's going to be the title of the page. well, we could do that by passing though data as a second parameter inside the render method. 
+-->
+
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+
+<body>
+  <%- include("./partials/nav.ejs") %>
+
+  <div class="blogs content">
+    <h2>All Blogs</h2>
+
+    <% if (blogs.length > 0) { %>
+      <% blogs.forEach(blog => { %>
+
+        <h3 class="title"><%= blog.title %></h3>
+        <p class="snippet"><%= blog.snippet %></p>
+
+      <% }) %>
+    <% } else { %>
+      <p>There are no blogs to display...</p>
+    <% } %>
+    
+  </div>
+
+  <%- include("./partials/footer.ejs") %>
+</body>
+</html>

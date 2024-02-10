@@ -66,5 +66,9 @@ When sharing project code, particularly on platforms such as GitHub, the node_mo
 Instead, recipients can utilize the package.json file to install the necessary dependencies using the "npm install" command.
 This command automatically installs all dependencies listed in the package.json file, ensuring that the relevant modules are readily available for the project without the need for manual installation of each individual dependency.
 
+.gitignore file:
+.gitignore file, which typically includes the node_modules directory.
+This ensures that the node_modules directory is not included in the commit when pushing changes to GitHub.
+
 In the next lesson we will install express and this is a framework for node that helps us to easily create node websites. 
 

@@ -20,6 +20,7 @@ app.get('/', (req, res) => {
 
 //do the same thing to /about page
 app.get('/about', (req, res) => {
+  console.log('get request from:' + req.url)
   // res.send('<p>about page</p>');
   res.sendFile('./views/about.html', { root: __dirname });
 });
