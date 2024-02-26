@@ -1,0 +1,33 @@
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+
+<body>
+  <%- include("./partials/nav.ejs") %>
+
+  <div class="details content">
+    <h2><%= blog.title %></h2> <!--here we present the blog title and body on the user screen. we rander this page based on the response of the dynamic rout. -->
+    <div class="content">
+      <p><%= blog.body %></p>
+    </div>
+    <a class="delete" data-doc="<%= blog._id %>">delete</a> <!--the "data-doc="<%= blog._id %>"" allow us to create a variable that holds the blog unique id. this will help us to delete the blog from the front end. -->
+  </div>
+
+  <%- include("./partials/footer.ejs") %>
+
+  <script> //this is how we delete the blog
+    const trashcan = document.querySelector('a.delete');
+
+    trashcan.addEventListener('click', (e) => {
+      const endpoint = `/blogs/${trashcan.dataset.doc}`; //when click event, then get unique blog id
+
+      fetch(endpoint, { //here we use the fetch api, and first delete the unique blog id. 
+        method: 'DELETE',
+      })
+      .then(response => response.json()) //after delete, fire a response to the app.js which over there we will build a delete handler to this response. 
+      .then(data => window.location.href = data.redirect) //then redirect back to blogs page
+      .catch(err => console.log(err));
+    });
+    
+  </script>
+</body>
+</html>

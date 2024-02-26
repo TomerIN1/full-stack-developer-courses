@@ -1,0 +1,25 @@
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+
+<body>
+  <%- include("./partials/nav.ejs") %>
+
+  <div class="blogs content">
+    <h2>All Blogs</h2>
+
+    <% if (blogs.length > 0) { %>
+      <% blogs.forEach(blog => { %>
+        <a class="single" href="/blogs/<%= blog._id %>"> <!--here we create a link from each blog. in the href we use this code to make the route parameter. so when a user click on one of the blogs, it goes to the database, select the blog id, and use it as a variable to add it to the route url. the end result is '/blog/dynamic_blog_id' now we can use it to handel it in our app.js which is a get request since the user wants to get his blog and see it on the screen-->
+          <h3 class="title"><%= blog.title %></h3>
+          <p class="snippet"><%= blog.snippet %></p>
+        </a>
+      <% }) %>
+    <% } else { %>
+      <p>There are no blogs to display...</p>
+    <% } %>
+    
+  </div>
+
+  <%- include("./partials/footer.ejs") %>
+</body>
+</html>
